@@ -1,10 +1,10 @@
 'use client'
-import Button from "@/components/Button";
-import Input from "@/components/Input";
 import Image from "next/image";
 import Link from "next/link";
+import { QueryClientProvider , QueryClient} from "react-query";
 
 export default function Home() {
+  const queryClient = new QueryClient();
   return (
    <div>
     {/* <Button variant="secondary" label="Fortnite" onClick={()=>console.log("POP START")} /> */}
