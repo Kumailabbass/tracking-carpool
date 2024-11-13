@@ -1,0 +1,1 @@
+// Layout for auth related pages
