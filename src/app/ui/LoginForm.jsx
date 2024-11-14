@@ -24,7 +24,7 @@ const LoginForm = () => {
 
   
   const handleLoginUser = async (e) => {   
-
+    console.log("I RANNNNN")
     e.preventDefault();
     if(isLoading) return;
     if(email == null || email.length == 0 || password == null || password.length == 0) {
@@ -34,27 +34,29 @@ const LoginForm = () => {
     try {
         setErrorMessage(null);
         setIsLoading(true);
-        const resp = await signIn("credentials", 
+        // const resp = 
+        await signIn("credentials", 
             {
-                redirect: false,
-                email: email,
-                password: password 
+                redirect: true,
+                email:email,
+                password:password,
+                callbackUrl:'/'
             });
-            if(resp.ok){
-                //login success
-                setIsLoading(false);
-                router.push('/profile')
-            }
-            else {
-                if(resp.error == 'CredentialsSignin'){
-                    setIsLoading(false);
-                    setErrorMessage("Incorrect email or password")
-                }
-                else {
-                    setIsLoading(false);
-                    setErrorMessage("something went wrong. Please try again")
-                }
-            } 
+            // if(resp.ok){
+            //     //login success
+            //     setIsLoading(false);
+            //     router.push('/profile')
+            // }
+            // else {
+            //     if(resp.error == 'CredentialsSignin'){
+            //         setIsLoading(false);
+            //         setErrorMessage("Incorrect email or password")
+            //     }
+            //     else {
+            //         setIsLoading(false);
+            //         setErrorMessage("something went wrong. Please try again")
+            //     }
+            // } 
   
         } catch (error) {
             setIsLoading(false);
@@ -83,6 +85,7 @@ const LoginForm = () => {
         <input
           type="text"
           name="uname"
+          onChange={(e)=>setEmail(e.target.value)}
           required
           className="font-medium w-full p-1 mt-1 mb-2 border-b-2 border-gray-900 focus:outline-none"
         />
@@ -92,6 +95,7 @@ const LoginForm = () => {
         <input
           type="password"
           name="psw"
+          onChange={(e) => setPassword(e.target.value)}
           required
           className="font-medium w-full p-1 mt-1 mb-4 border-b-2 border-gray-900 focus:outline-none"
         />
@@ -102,6 +106,9 @@ const LoginForm = () => {
           Enter
         </button>
       </form>
+      {
+        errorMessage && errorMessage
+      }
       <div className="w-full text-center mt-5 flex justify-between text-sm">
         <b>Don&apos;t have an account?</b>
         <a href="#" className="font-extrabold text-red-800 hover:underline">
