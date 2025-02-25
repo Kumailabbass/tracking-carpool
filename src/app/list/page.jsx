@@ -4,96 +4,17 @@ import { BellDot} from "lucide-react";
 import { Settings2 } from "lucide-react";
 import { Plus } from "lucide-react";
 import { SquarePen, Trash2 } from "lucide-react";
+import Drivers from "../list/driverdetails"
+// import { useRouter } from "next/navigation"; // Import useRouter
+
 
 
 const DriverTable = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  // const router = useRouter(); // Initialize router
+  
 
-  const drivers = [
-
-    {
-      id: "CP-BK 436",
-      name: "Ali Ahmed",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-    {
-      id: "CP-BK 501",
-      name: "Raza Shafiq",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-    {
-      id: "CP-BK 325",
-      name: "Ali Ahmed",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-    {
-      id: "CP-BK 712",
-      name: "Ali Ahmed",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-    {
-      id: "CP-BK 876",
-      name: "Ali Ahmed",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-    {
-      id: "CP-BK 440",
-      name: "Ali Ahmed",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-    {
-      id: "CP-BK 618",
-      name: "Ali Ahmed",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-    {
-      id: "CP-BK 203",
-      name: "Ahmed khan",
-      phone: "+92 318 028882",
-      car: "Alto MINI-BPW-124",
-      passenger: "3-Passenger",
-      zone: "Gulistan e Johar",
-      startLocation: "Kamran Chowrangi",
-      endLocation: "Nazimabad 7 Number Bus Stop",
-    },
-  ];
-
-  const filteredDrivers = drivers.filter((driver) =>
+  const filteredDrivers = Drivers.filter((driver) =>
     driver.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     driver.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
     driver.zone.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -128,7 +49,7 @@ const DriverTable = () => {
 
       <div>
         <div className='flex justify-between m-5'>
-          <p>All Routes({drivers.length})</p>
+          <p>All Routes({Drivers.length})</p>
           <div className='flex gap-2'>
             <a className='bg-gray-800 w-16 rounded-md text-white flex justify-center items-center gap-1 text-xs' href="">
             <Settings2 size={14} color="white" />
@@ -164,8 +85,8 @@ const DriverTable = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredDrivers.length > 0 ? (
-                filteredDrivers.map((driver, index) => (
+              {Drivers.length > 0 ? (
+                Drivers.map((driver, index) => (
                   <tr key={index} className="text-gray-700 text-center text-xs">
                     <td className="py-2 px-4">{driver.id}</td>
                     <td className="py-2 px-4">{driver.name}</td>
@@ -176,13 +97,17 @@ const DriverTable = () => {
                     <td className="py-2 px-4">{driver.startLocation}</td>
                     <td className="py-2 px-4">{driver.endLocation}</td>
                     <td className="py-2 px-4">
-                      <button className=" text-white px-3 py-1 rounded">
-                      <SquarePen size={14} color="green" />                      
-                      </button>
-                      <button className=" text-white px-3 py-1 rounded ml-2">
-                      <Trash2 size={14} color="red" />
-                      </button>
-                    </td>
+  <div className="flex">
+    <a className="text-white px-3 py-1 rounded" href={`/driverinfo?id=${driver.id}`}>
+      <SquarePen size={14} color="green" />
+    </a>
+
+    <a className="text-white px-3 py-1 rounded" href="">
+      <Trash2 size={14} color="red" />
+    </a>
+  </div>
+</td>
+
                   </tr>
                 ))
               ) : (
