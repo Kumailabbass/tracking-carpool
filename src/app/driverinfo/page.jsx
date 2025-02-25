@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Drivers from "../list/driverdetails";
 import Image from "next/image";
-import { BellDot, SquarePen, Trash2 } from "lucide-react";
+import { BellDot, Trash2 } from "lucide-react";
 import Passengers from "./passengerdetails";
 
 export default function DriverInfo() {

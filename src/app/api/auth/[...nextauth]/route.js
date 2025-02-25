@@ -11,17 +11,17 @@ export const authOptions = {
                 email:{label:'email',type:'string',placeholder:'enter your email'},
                 password:{label:'password',type:'password'}
             },
-            async authorize(credentials,req){
-                console.log("IA MARUNSADNASND",credentials.email , credentials.email )
-                const user = {id:'1',username:'haider',email:'haider@gmail.com',password:'123'}
-                if(credentials.email === user.email &&
-                    credentials.password === user.password
-                ){
-                    return Promise.resolve(user)
-                }else{
-                    return Promise.resolve(null)
-                }
-            }
+            // async authorize(credentials,req){
+            //     console.log("IA MARUNSADNASND",credentials.email , credentials.email )
+            //     const user = {id:'1',username:'haider',email:'haider@gmail.com',password:'123'}
+            //     if(credentials.email === user.email &&
+            //         credentials.password === user.password
+            //     ){
+            //         return Promise.resolve(user)
+            //     }else{
+            //         return Promise.resolve(null)
+            //     }
+            // }
         }),
         // GitHub({
         //     clientId:'Ov23li6D59Y5a80spCGA',

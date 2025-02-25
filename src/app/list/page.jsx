@@ -5,6 +5,8 @@ import { Settings2 } from "lucide-react";
 import { Plus } from "lucide-react";
 import { SquarePen, Trash2 } from "lucide-react";
 import Drivers from "../list/driverdetails"
+import Image from "next/image";
+
 
 
 const DriverTable = () => {
@@ -146,11 +148,13 @@ const DriverTable = () => {
           <div className="mb-4">
             <h3 className="font-semibold mb-2">Add Driver and Car Info</h3>
             <div className="flex items-center gap-4">
-              <img
-            src={"/assets/imgs/image.png"}
-                alt="Driver"
-                className="w-44 h-48 rounded-md object-cover border"
-              />
+            <Image
+  src="/assets/imgs/image.png"
+  alt="Driver"
+  width={176} // Equivalent to w-44
+  height={192} // Equivalent to h-48
+  className="rounded-md object-cover border"
+/>
               <div className="flex-1 grid grid-cols-2 gap-2">
               <input className="border p-2 rounded w-full col-span-2" type="id" placeholder="ID" />
 
