@@ -80,6 +80,14 @@ function DriverInfoComponent() {
             <p className="text-lg font-semibold text-gray-800">End Location</p>
             <p className="text-blue-500 underline">{driver.endLocation}</p>
           </div>
+          <div>
+            <p className="text-lg font-semibold text-gray-800">No. of Passengers</p>
+            <p className="text-gray-600">{driver.passenger}</p>
+          </div>
+          <div>
+            <p className="text-lg font-semibold text-gray-800">Status</p>
+            <span className="px-3 py-1 bg-green-100 text-green-600 rounded-full">Online</span>
+          </div>
         </div>
       </div>
 
