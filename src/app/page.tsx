@@ -16,7 +16,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center bg-white">
+    <div className="flex justify-center bg-white h-screen w-screen">
       <div className="h-[310px] w-[350px] bg-white absolute flex flex-col items-center mt-[110px] rounded-xl shadow-2xl">
         <p className="text-gray-400 text-[60px] font-sans m-3">LOGO</p>
         <input
@@ -42,7 +42,7 @@ const Login = () => {
       </div>
       <div className="mt-[40%]">
         <span className="text-gray-500 font-sans font-bold">Powered by </span>
-        <span className="font-sans font-bold">360XpertSolutions</span>
+        <span className="font-sans font-bold text-black">360XpertSolutions</span>
       </div>
     </div>
   );

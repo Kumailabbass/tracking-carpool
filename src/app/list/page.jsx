@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { BellDot, Plus, SquarePen, Trash2 } from "lucide-react";
+import { BellDot, Settings2, Plus, SquarePen, Trash2 } from "lucide-react";
 import Drivers from "../list/driverdetails";
 import Image from "next/image";
 
@@ -17,11 +17,20 @@ const DriverTable = () => {
     zone: "",
     startLocation: "",
     endLocation: "",
-    carType: "",
-    passengers: Array(3).fill({ name: "", phone: "", location: "" }),
+    carType: "", // Car type is stored here
+    passengers: Array(3).fill({ name: "", phone: "", location: "" }), // Default to 3 passengers
   });
 
-  // const [selectedCarType, setSelectedCarType] = useState(""); 
+  const handleCarTypeChange = (e) => {
+    const carType = e.target.value;
+
+    // Update the car type in newDriver
+    setNewDriver((prev) => ({
+      ...prev,
+      carType,
+      passengers: Array(carType === "sedan" ? 4 : 3).fill({ name: "", phone: "", location: "" }), // Update passengers array based on car type
+    }));
+  };
 
   const filteredDrivers = drivers.filter((driver) =>
     Object.values(driver).some((value) =>
@@ -30,17 +39,18 @@ const DriverTable = () => {
   );
 
   const handleAddDriver = () => {
-
+    // Calculate the next ID
     const nextId = drivers.length > 0
-      ? Math.max(...drivers.map((driver) => Number(driver.id) || 0)) + 1
+      ? Math.max(...drivers.map((driver) => Number(driver.id))) + 1
       : 1;
 
+    // Add the new driver to the list
     setDrivers([...drivers, { ...newDriver, id: nextId.toString() }]);
 
-
+    // Close the modal
     setShowModal(false);
 
-
+    // Reset the newDriver state
     setNewDriver({
       id: "",
       name: "",
@@ -51,28 +61,12 @@ const DriverTable = () => {
       startLocation: "",
       endLocation: "",
       carType: "",
-      passengers: Array(3).fill({ name: "", phone: "", location: "" }), 
+      passengers: Array(3).fill({ name: "", phone: "", location: "" }), // Reset to 3 passengers
     });
-
-    setSelectedCarType("");
   };
 
   const handleDeleteDriver = (id) => {
     setDrivers(drivers.filter((driver) => driver.id !== id));
-  };
-
-  const handleCarTypeChange = (e) => {
-    const carType = e.target.value;
-    setSelectedCarType(carType);
-    setNewDriver({ ...newDriver, carType });
-
-
-    const passengerCount = carType === "sodan" ? 4 : 3; 
-    
-    setNewDriver((prev) => ({
-      ...prev,
-      passengers: Array(passengerCount).fill({ name: "", phone: "", location: "" }),
-    }));
   };
 
   const handlePassengerChange = (index, field, value) => {
@@ -101,7 +95,10 @@ const DriverTable = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center m-5 gap-4">
           <p>All Routes({Drivers.length})</p>
           <div className="flex flex-col sm:flex-row gap-2">
-            
+            <a className="bg-gray-800 rounded-md p-2 text-white flex justify-center items-center gap-1 text-xs w-full sm:w-auto" href="">
+              <Settings2 size={14} color="white" />
+              Filter
+            </a>
             <input
               className="border-2 rounded-md indent-2 px-2"
               type="text"
@@ -119,13 +116,13 @@ const DriverTable = () => {
         </div>
       </div>
 
-      <div className="p-10">
+      <div className="p-6">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="p-4">
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-800 text-white uppercase text-xs font-semibold text-left">
+                  <tr className="bg-gray-800 text-white uppercase text-sm font-semibold text-left">
                     <th className="py-2 px-4 rounded-l-lg">ID</th>
                     <th className="py-2 px-4">Driver Name</th>
                     <th className="py-2 px-4">Phone Number</th>
@@ -142,7 +139,7 @@ const DriverTable = () => {
                     filteredDrivers.map((driver, index) => (
                       <tr
                         key={driver.id}
-                        className={`text-gray-700 text-xs border-b hover:bg-gray-50 cursor-pointer ${
+                        className={`text-gray-700 text-sm border-b hover:bg-gray-50 cursor-pointer ${
                           index % 2 === 0 ? "bg-white" : "bg-gray-100"
                         }`}
                         onClick={() => (window.location.href = `/driverinfo?id=${driver.id}`)}
@@ -172,7 +169,7 @@ const DriverTable = () => {
                               href={`/driverinfo?id=${driver.id}`}
                               onClick={(e) => e.stopPropagation()}
                             >
-                              <SquarePen size={12} />
+                              <SquarePen size={14} />
                             </a>
                             <button
                               className="text-red-600 hover:text-red-800"
@@ -181,7 +178,7 @@ const DriverTable = () => {
                                 handleDeleteDriver(driver.id);
                               }}
                             >
-                              <Trash2 size={12} />
+                              <Trash2 size={14} />
                             </button>
                           </div>
                         </td>
@@ -239,7 +236,7 @@ const DriverTable = () => {
                     onChange={handleCarTypeChange}
                   >
                     <option value="">Choose Car Type</option>
-                    <option value="sodan">Sedan</option>
+                    <option value="sedan">Sedan</option>
                     <option value="mini">Mini</option>
                   </select>
 
@@ -280,7 +277,7 @@ const DriverTable = () => {
 
             <div className="flex justify-between mt-4 gap-3">
               <button
-                className="border px-4 py-2 rounded w-1/2"
+                className="border border-black px-4 py-2 rounded w-1/2"
                 onClick={() => setShowModal(false)}
               >
                 Cancel

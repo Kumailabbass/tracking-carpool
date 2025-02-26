@@ -102,7 +102,7 @@ function DriverInfoComponent() {
       <div className="bg-white shadow-md p-6 rounded-lg mt-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="col-span-1">
-            <div className="relative w-[90%]">
+            <div className="relative w-[80%]">
               <h2 className="text-lg font-semibold text-gray-800 mb-3">Driver Info</h2>
               <button
                 className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md"
