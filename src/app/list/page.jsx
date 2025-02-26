@@ -151,12 +151,12 @@ const DriverTable = () => {
             <Image
   src="/assets/imgs/image.png"
   alt="Driver"
-  width={176} // Equivalent to w-44
-  height={192} // Equivalent to h-48
+  width={176} 
+  height={192} 
   className="rounded-md object-cover border"
 />
               <div className="flex-1 grid grid-cols-2 gap-2">
-              <input className="border p-2 rounded w-full col-span-2" type="id" placeholder="ID" />
+              <input className="border p-2 rounded w-full col-span-2" placeholder="ID" onChange={(e) => setNewDriver({ ...newDriver, id: e.target.value })} />
 
                 <input className="border p-2 rounded w-full" placeholder="Driver Name" 
                   onChange={(e) => setNewDriver({ ...newDriver, name: e.target.value })} />
