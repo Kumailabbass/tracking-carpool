@@ -17,18 +17,17 @@ const DriverTable = () => {
     zone: "",
     startLocation: "",
     endLocation: "",
-    carType: "", // Car type is stored here
-    passengers: Array(3).fill({ name: "", phone: "", location: "" }), // Default to 3 passengers
+    carType: "", 
+    passengers: Array(3).fill({ name: "", phone: "", location: "" }), 
   });
 
   const handleCarTypeChange = (e) => {
     const carType = e.target.value;
 
-    // Update the car type in newDriver
     setNewDriver((prev) => ({
       ...prev,
       carType,
-      passengers: Array(carType === "sedan" ? 4 : 3).fill({ name: "", phone: "", location: "" }), // Update passengers array based on car type
+      passengers: Array(carType === "sedan" ? 4 : 3).fill({ name: "", phone: "", location: "" }), 
     }));
   };
 
@@ -39,19 +38,19 @@ const DriverTable = () => {
   );
 
   const handleAddDriver = () => {
-    // Calculate the next ID
+
     const nextId = drivers.length > 0
       ? Math.max(...drivers.map((driver) => Number(driver.id))) + 1
       : 1;
 
-    // Add the new driver to the list
-    setDrivers([...drivers, { ...newDriver, id: nextId.toString() }]);
 
-    // Close the modal
-    setShowModal(false);
+      setDrivers([...drivers, { ...newDriver, id: nextId.toString() }]);
 
-    // Reset the newDriver state
-    setNewDriver({
+
+      setShowModal(false);
+
+
+      setNewDriver({
       id: "",
       name: "",
       phone: "",
@@ -61,7 +60,7 @@ const DriverTable = () => {
       startLocation: "",
       endLocation: "",
       carType: "",
-      passengers: Array(3).fill({ name: "", phone: "", location: "" }), // Reset to 3 passengers
+      passengers: Array(3).fill({ name: "", phone: "", location: "" }), 
     });
   };
 

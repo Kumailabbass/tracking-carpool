@@ -200,7 +200,6 @@ function DriverInfoComponent() {
         </div>
       </div>
 
-      {/* Edit Driver Modal */}
       {showEditModal && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white text-black p-6 rounded-lg w-[450px]">
@@ -264,7 +263,6 @@ function DriverInfoComponent() {
         </div>
       )}
 
-      {/* Edit Passenger Modal */}
       {showPassengerEditModal && selectedPassenger && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white text-black p-6 rounded-lg w-[450px]">
@@ -310,7 +308,6 @@ function DriverInfoComponent() {
         </div>
       )}
 
-      {/* Add Passenger Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white text-black p-5 rounded-lg">
