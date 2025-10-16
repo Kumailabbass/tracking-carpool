@@ -41,7 +41,7 @@ const Login = () => {
         </button>
       </div>
       <div className="mt-[40%]">
-       
+       <p>&copy; {currentYear} Syed Kumail Abbas. All Rights Reserved.</p>
       </div>
     </div>
   );
