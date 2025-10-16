@@ -84,7 +84,7 @@ const Login = () => {
         
       </div>
       <div className="mt-[40%]">
-       <p className="text-black">&copy; {currentYear} Syed Kumail Abbas. All Rights Reserved.</p>
+       <p className="text-gray-400">&copy; {currentYear} Syed Kumail Abbas. All Rights Reserved.</p>
       </div>
     </div>
   );
