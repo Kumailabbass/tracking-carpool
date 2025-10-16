@@ -6,6 +6,7 @@ const Login = () => {
   const router = useRouter();
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
+  const currentYear = new Date().getFullYear();
 
   const handleLogin = () => {
     if (number === "123456789" && password === "12345") {
