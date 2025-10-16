@@ -41,8 +41,7 @@ const Login = () => {
         </button>
       </div>
       <div className="mt-[40%]">
-        <span className="text-gray-500 font-sans font-bold">Powered by </span>
-        <span className="font-sans font-bold text-black">360XpertSolutions</span>
+       
       </div>
     </div>
   );
