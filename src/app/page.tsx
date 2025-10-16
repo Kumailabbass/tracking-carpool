@@ -21,6 +21,10 @@ const Login = () => {
     }
   };
 
+  const closeHelp = () => {
+    setShowHelp(false);
+  };
+
   return (
     <div className="flex justify-center bg-white h-screen w-screen">
 
