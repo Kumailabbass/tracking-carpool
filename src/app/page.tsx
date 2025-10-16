@@ -6,6 +6,7 @@ const Login = () => {
   const router = useRouter();
   const [number, setNumber] = useState('');
   const [password, setPassword] = useState('');
+  const [showHelp, setShowHelp] = useState(false);
   const currentYear = new Date().getFullYear();
  
   useEffect(() => {
