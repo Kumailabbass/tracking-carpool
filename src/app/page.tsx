@@ -52,7 +52,7 @@ const Login = () => {
         </div>
       )}
       
-      <div className="h-[310px] w-[350px] bg-white absolute flex flex-col items-center mt-[110px] rounded-xl shadow-2xl">
+      <div className="h-[325px] w-[350px] bg-white absolute flex flex-col items-center mt-[110px] rounded-xl shadow-2xl">
         <p className="text-gray-400 text-[60px] font-sans m-3">LOGO</p>
         <input
           type="number"
